@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cart Page </h1>
+@if (ViewBag.cart != null)
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Option
+                </th>
+                <th>Name </th>
+                <th>Photo </th>
+                <th>Price </th>
+                <th>Quantity </th>
+                <th>Sub total </th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in ViewBag.cart)
+            {
+                <tr>
+                    <td><a asp-controller="cart" class="btn btn-outline-danger" asp-action="remove" asp-route-id="@item.Product.Id">Remove</a></td>
+                    <td>@item.Product.Name</td>
+                    <td> <img src=@item.Product.PictureUrl width="60" /></td>
+                    <td>@item.Product.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>(@item.Product.Price * @item.Quantity)</td>
+
+                </tr>
+            }
+            <tr>
+                <td algin="right" colspan="6">Sum</td>
+                <td algin="right" colspan="6">@ViewBag.Total</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <br />
+    <a asp-controller="checkout" asp-action="index" asp-route-id="" class="btn btn-outline-danger">Go to check out</a>
+}
+else
+{
+    <h2>Basket is empty!</h2>
+    <br />
+}
+
+<a asp-controller="home" asp-action="index" class="btn btn-outline-primary">Continue shopping</a>
+
+

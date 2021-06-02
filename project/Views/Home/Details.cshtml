@@ -1,0 +1,37 @@
+﻿@model project.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <hr />
+    <div class="row">
+
+        <div class="col-4">
+            <img src= @Html.DisplayFor(model => model.PictureUrl) style="max-height:450px;"/>
+
+        </div>
+        <div class="col-8">
+            <h3>
+                @Html.DisplayFor(model => model.Name)
+            </h3>
+            <h4>Price: $ @Html.DisplayFor(model => model.Price) </h4>
+            <p>
+                @Html.DisplayFor(model => model.ShortDescription)
+            </p>
+            <p>
+                @Html.DisplayFor(model => model.LongDescriprion)
+            </p>
+
+            <button class="btn btn-outline-primary" style="float:right">Add Basket</button>
+
+        </div>
+      
+    </div>
+</div>
+<div>
+ <hr />
+
+    <a class="btn btn-outline-info" asp-action="Index">Back</a>
+</div>

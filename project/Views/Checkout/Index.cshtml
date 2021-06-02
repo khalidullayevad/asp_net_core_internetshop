@@ -1,0 +1,32 @@
+﻿@model project.Models.Order
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Check out page</h1>
+<table cellpadding="2" cellspacing="2" border="1">
+    <tr>
+        <th>
+            Total Amount To pay
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @ViewBag.total
+        </td>
+    </tr>
+    <div class="row">
+        <div class="col-md-4">
+            <a asp-action="Create">Buy </a>
+                <form asp-controller="checkout" asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                   
+                </form>
+        </div>
+    </div>
+</table>
+
+<br />
